@@ -24,6 +24,7 @@ def train(args):
         num_actor_devices=args.num_actor_devices,
         num_actors=args.num_actors,
         training_device=args.training_device,
+        total_frames=20_000_000
     )
 
     # Train DMC Agents
@@ -34,7 +35,8 @@ if __name__ == '__main__':
     parser.add_argument(
         '--env',
         type=str,
-        default='leduc-holdem',
+        # default='leduc-holdem',
+        default='okey',
         choices=[
             'blackjack',
             'leduc-holdem',
@@ -43,7 +45,8 @@ if __name__ == '__main__':
             'mahjong',
             'no-limit-holdem',
             'uno',
-            'gin-rummy'
+            'gin-rummy',
+            'okey'
         ],
     )
     parser.add_argument(
@@ -54,21 +57,23 @@ if __name__ == '__main__':
     parser.add_argument(
         '--load_model',
         action='store_true',
+        default='experiments/dmc_result/num_buffers_200_copy/okey/0_15002176.pth',
         help='Load an existing model',
     )
     parser.add_argument(
         '--xpid',
-        default='leduc_holdem',
+        # default='leduc_holdem',
+        default='okey',
         help='Experiment id (default: leduc_holdem)',
     )
     parser.add_argument(
         '--savedir',
-        default='experiments/dmc_result',
+        default='experiments/dmc_result/num_buffers_200_copy',
         help='Root dir where experiment data will be saved'
     )
     parser.add_argument(
         '--save_interval',
-        default=30,
+        default=20,
         type=int,
         help='Time interval (in minutes) at which to save the model',
     )
@@ -80,7 +85,8 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         '--num_actors',
-        default=5,
+        default=4,
+        # default=1,
         type=int,
         help='The number of actors for each simulation device',
     )
@@ -90,6 +96,12 @@ if __name__ == '__main__':
         type=str,
         help='The index of the GPU used for training models',
     )
+    # parser.add_argument(
+    #     '--unroll_length',
+    #     default="18",
+    #     type=int,
+    #     help='unroll_length',
+    # )
 
     args = parser.parse_args()
 

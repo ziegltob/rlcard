@@ -18,21 +18,23 @@ from rlcard.utils import (
 def train(args):
     # Make environments, CFR only supports Leduc Holdem
     env = rlcard.make(
-        'leduc-holdem',
+        # 'leduc-holdem',
+        'okey',
         config={
-            'seed': 0,
+        #     'seed': 0,
             'allow_step_back': True,
         }
     )
     eval_env = rlcard.make(
-        'leduc-holdem',
-        config={
-            'seed': 0,
-        }
+        # 'leduc-holdem',
+        'okey',
+        # config={
+        #     'seed': 0,
+        # }
     )
 
     # Seed numpy, torch, random
-    set_seed(args.seed)
+    # set_seed(args.seed)
 
     # Initilize CFR Agent
     agent = CFRAgent(
@@ -96,7 +98,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--log_dir',
         type=str,
-        default='experiments/leduc_holdem_cfr_result/',
+        default='experiments/cfr_result/',
     )
 
     args = parser.parse_args()

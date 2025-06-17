@@ -4,6 +4,11 @@ from rlcard.envs.env import Env
 from rlcard.envs.registration import register, make
 
 register(
+    env_id='okey',
+    entry_point='rlcard.envs.okey:OkeyEnv',
+)
+
+register(
     env_id='blackjack',
     entry_point='rlcard.envs.blackjack:BlackjackEnv',
 )

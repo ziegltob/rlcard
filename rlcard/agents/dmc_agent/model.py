@@ -43,6 +43,7 @@ class DMCNet(nn.Module):
         return values
 
 class DMCAgent:
+# class DMCAgent(torch.nn.Module):
     def __init__(
         self,
         state_shape,
@@ -51,11 +52,16 @@ class DMCAgent:
         exp_epsilon=0.01,
         device="0",
     ):
+        # super().__init__()
         self.use_raw = False
         self.device = 'cuda:'+device if device != "cpu" else "cpu"
         self.net = DMCNet(state_shape, action_shape, mlp_layers).to(self.device)
         self.exp_epsilon = exp_epsilon
         self.action_shape = action_shape
+
+    # def forward(self, x):
+    #     # Implement forward pass
+    #     return self.net(x)
 
     def step(self, state):
         action_keys, values = self.predict(state)

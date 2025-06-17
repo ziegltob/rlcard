@@ -111,7 +111,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--env',
         type=str,
-        default='leduc-holdem',
+        default='okey',
         choices=[
             'blackjack',
             'leduc-holdem',
@@ -122,6 +122,7 @@ if __name__ == '__main__':
             'uno',
             'gin-rummy',
             'bridge',
+            'okey'
         ],
     )
     parser.add_argument(
@@ -156,7 +157,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--evaluate_every',
         type=int,
-        default=100,
+        default=50,
     )
     parser.add_argument(
         '--log_dir',
@@ -173,7 +174,7 @@ if __name__ == '__main__':
     parser.add_argument(
         "--save_every",
         type=int,
-        default=-1)
+        default=10000)
 
     args = parser.parse_args()
 

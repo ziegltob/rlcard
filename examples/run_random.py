@@ -38,7 +38,8 @@ if __name__ == '__main__':
     parser.add_argument(
         '--env',
         type=str,
-        default='leduc-holdem',
+        # default='leduc-holdem',
+        default='okey',
         choices=[
             'blackjack',
             'leduc-holdem',
@@ -49,6 +50,7 @@ if __name__ == '__main__':
             'uno',
             'gin-rummy',
             'bridge',
+            'okey'
         ],
     )
 
